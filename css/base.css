@@ -1,0 +1,105 @@
+#enlace_index{
+    padding-left: 340px; 
+}
+
+/*#datos{
+    padding-left: 300px;
+}*/
+
+#formLogin a{
+    text-decoration: none;
+    color: black;
+}
+
+#formLogin p{    
+    color: #6c757d;
+}
+
+#usuario, #password{
+    width: 22%;
+}
+
+.waves-effect{
+    padding-bottom: 4px;
+}
+
+#btn_enviar{
+    font-size:12px;
+    font-family:Arial;
+    font-weight:bold;
+    color:white;
+    background:#4da08c;
+    border:0px;
+    width:80px;
+    height:19px;
+}
+
+#usuario, #contraseña{
+    width: 25%;
+}
+.box {
+    overflow: hidden;
+}
+
+.content {
+    font-size: 15px;
+    line-height: 20px;
+    padding: 0 20px;
+    text-align: justify;
+}
+
+.left {
+    float: left;       
+}
+
+.right {
+    float: right; 
+    padding: 30px;   
+}
+
+
+/* registro */
+ 
+#form_registro{
+    padding-top: 220px;
+    position: relative;  
+    left:50%;
+    top:50%;
+    margin-left:-165px;
+    margin-top: -210px;
+    width: 330px; 
+}
+
+#cabecera{   
+    height:40px;
+    line-height:50px;
+    text-align:center;
+}
+ 
+#cuerpo{
+    background:#ececec;
+    border:solid #ccc;
+    /*aumentando el 2px 'aparece' un borde*/
+    border-width: 2px 0;
+    padding:15px 35px;
+}
+ 
+input{
+   
+    font:bold 12px Arial, Helvetica, sans-serif;
+    height: 24px;
+    line-height: 20px;
+    padding:0 2px;
+    width: 230px;
+}
+ 
+
+#submit_registro{
+    background: -webkit-linear-gradient(top,#fc6,#f63);
+    background: linear-gradient(top,#fc6,#f63);
+    /*Color del texto*/
+   
+    width: 120px;
+}
+
+

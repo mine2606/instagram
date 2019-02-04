@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Inter Grafic</title>
+        <script src="/js/libs/jquery-3.3.1.min.js"></script>
+        <script src="/js/libs/moment.min.js"></script>
+        <script type="text/javascript" src="/js/base.js"></script>
+        <link rel="stylesheet" href="/css/base.css">
+    </head>
+    <body>
+        <div>
+            <img src="https://pbs.twimg.com/profile_images/813833355464757248/R6kf0yEv.jpg" alt="Logo" width="80" height="80">
+        </div>
+        <div> 
+            <h2>Enviar foto</h2> 
+            <form action="http://localhost:8080/uploader" method="post" enctype="multipart/form-data">
+                <input type="file" name="archivo">
+                <input type="texto" name="texto" id="texto_comentario" placeholder="Pon tu texto aquí">
+                <input type="submit" value="Subir foto">
+            </form> 
+        </div> 
+    </body>
+</html>
