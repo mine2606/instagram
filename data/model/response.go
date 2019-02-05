@@ -14,3 +14,7 @@ type RLogin struct {
 	Usuario  string
 	Password string
 }
+
+type RRegistro struct {
+	Registro bool
+}

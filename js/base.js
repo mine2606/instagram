@@ -33,6 +33,13 @@ $(document).ready(function() {
 
         }).done(function(data) {
             console.log("Petición realizada");
+            console.log(data);
+            alert("Te has registrado con éxito");
+            if (data == true){
+                window.location.href = "/";
+            } else {
+                alert("El usuario ya existe.");
+            }
 
         }).fail(function(data) {
             console.log("Petición fallida");        
@@ -70,7 +77,7 @@ $(document).ready(function() {
         }).done(function(data) {
             console.log("Petición realizada");
             if (data == true){
-                window.location.href = "/perfil";
+                window.location.href = "/";
             }
         
         }).fail(function(data) {
@@ -82,6 +89,15 @@ $(document).ready(function() {
             console.log("Petición completa");
         });
     });
+
+
+    if (document.cookie != ""){
+        $("#formLogin").hide();
+    }else{
+        $(".right2").hide();
+    }
+
+
 
 });
 

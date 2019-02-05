@@ -164,11 +164,9 @@ func RegistroUsuario(w http.ResponseWriter, r *http.Request) {
 		hashComoCadena := string(hash)
 		user.Password = hashComoCadena
 
-		w.WriteHeader(http.StatusOK)
-		w.Header().Add("Content-Type", "application/json")
-		respuesta, _ := json.Marshal(user)
-		fmt.Fprint(w, string(respuesta))
-		go client.InsertarUser(&user)
+		resp := client.InsertarUser(&user)
+
+		fmt.Fprint(w, resp)
 
 	} else {
 		w.WriteHeader(http.StatusBadRequest)

@@ -9,20 +9,42 @@ import (
 )
 
 //InsertarUser test
-func InsertarUser(objeto *model.User) {
+func InsertarUser(objeto *model.User) bool {
 
 	db, err := sql.Open("mysql", "ubuntu:ubuntu@tcp(localhost:3306)/Instagram")
 	if err != nil {
 		panic(err.Error())
 	}
-	fmt.Println("nombre: ", objeto.Nombre)
-	defer db.Close()
-	insert, err := db.Query("INSERT INTO User(Nombre, Usuario, Password, Email) VALUES (?, ?, ?, ?)", objeto.Nombre, objeto.Usuario, objeto.Password, objeto.Email)
 
-	if err != nil {
-		panic(err.Error())
+	resp := false
+
+	comando := "SELECT ID FROM User WHERE (Usuario = '" + objeto.Usuario + "' OR Email = '" + objeto.Email + "') LIMIT 1"
+	fmt.Println(comando)
+	query, err := db.Query("SELECT ID FROM User WHERE (Usuario = ? OR Email = ?) LIMIT 1", objeto.Usuario, objeto.Email)
+
+	var resultado string
+
+	for query.Next() {
+		err = query.Scan(&resultado)
+		if err != nil {
+			panic(err.Error())
+		}
 	}
-	insert.Close()
+
+	if resultado == "" {
+		fmt.Println("nombre: ", objeto.Nombre)
+		defer db.Close()
+		insert, err := db.Query("INSERT INTO User(Nombre, Usuario, Password, Email) VALUES (?, ?, ?, ?)", objeto.Nombre, objeto.Usuario, objeto.Password, objeto.Email)
+
+		if err != nil {
+			panic(err.Error())
+		}
+		insert.Close()
+		resp = true
+	}
+
+	return resp
+
 }
 
 //Login función para iniciar sesion

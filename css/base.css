@@ -1,11 +1,3 @@
-#enlace_index{
-    padding-left: 340px; 
-}
-
-/*#datos{
-    padding-left: 300px;
-}*/
-
 #formLogin a{
     text-decoration: none;
     color: black;
@@ -20,10 +12,6 @@
 }
 
 .waves-effect{
-    padding-bottom: 4px;
-}
-
-#btn_enviar{
     font-size:12px;
     font-family:Arial;
     font-weight:bold;
@@ -37,6 +25,7 @@
 #usuario, #contraseña{
     width: 25%;
 }
+
 .box {
     overflow: hidden;
 }
@@ -52,14 +41,13 @@
     float: left;       
 }
 
-.right {
+#derecha {
     float: right; 
-    padding: 30px;   
+    padding: 10px;   
 }
 
 
-/* registro */
- 
+/* registro */ 
 #form_registro{
     padding-top: 220px;
     position: relative;  
