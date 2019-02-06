@@ -88,16 +88,16 @@ $(document).ready(function() {
         }).always(function(data){
             console.log("Petición completa");
         });
+   
     });
 
-
+    //para ocultar los tres botones sin loguear o para ocultar el login en caso de iniciar sesión
     if (document.cookie != ""){
         $("#formLogin").hide();
     }else{
         $(".right2").hide();
     }
-
-
+   
 
 });
 

@@ -4,7 +4,8 @@ import "time"
 
 //Foto struct
 type Foto struct {
-	URL string
+	Texto string
+	URL   string
 }
 
 //Comentario struct

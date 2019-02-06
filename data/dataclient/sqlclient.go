@@ -18,12 +18,14 @@ func InsertarUser(objeto *model.User) bool {
 
 	resp := false
 
+	//Comprobamos si el usuario y el email existen
 	comando := "SELECT ID FROM User WHERE (Usuario = '" + objeto.Usuario + "' OR Email = '" + objeto.Email + "') LIMIT 1"
 	fmt.Println(comando)
 	query, err := db.Query("SELECT ID FROM User WHERE (Usuario = ? OR Email = ?) LIMIT 1", objeto.Usuario, objeto.Email)
 
 	var resultado string
 
+	//Si existe no muestra la respuesta
 	for query.Next() {
 		err = query.Scan(&resultado)
 		if err != nil {
@@ -31,6 +33,7 @@ func InsertarUser(objeto *model.User) bool {
 		}
 	}
 
+	//Si está vacío y los datos no coinciden, los guarda en la base de datos y nos muestra la respuesta
 	if resultado == "" {
 		fmt.Println("nombre: ", objeto.Nombre)
 		defer db.Close()
@@ -66,6 +69,44 @@ func Login(objeto *model.Login) string {
 
 	for query.Next() {
 		err = query.Scan(&resultado)
+		if err != nil {
+			panic(err.Error())
+		}
+	}
+	return resultado
+}
+
+//SubirFoto test
+func SubirFoto(url string, texto string, id int) {
+	db, err := sql.Open("mysql", "ubuntu:ubuntu@tcp(localhost:3306)/Instagram")
+	if err != nil {
+		panic(err.Error())
+	}
+	defer db.Close()
+	insert, err := db.Query("INSERT INTO Foto(URL, Texto, User_ID) VALUES (?, ?, ?)", url, texto, id)
+	if err != nil {
+		panic(err.Error())
+	}
+	insert.Close()
+}
+
+//ConsultaID test
+func ConsultaID(usuario string) int {
+	db, err := sql.Open("mysql", "ubuntu:ubuntu@tcp(localhost:3306)/Instagram")
+	if err != nil {
+		panic(err.Error())
+	}
+	defer db.Close()
+	comando := "SELECT ID FROM User WHERE (Usuario = '" + usuario + "')"
+	fmt.Println(comando)
+	query, err := db.Query("SELECT ID FROM User WHERE (Usuario = '" + usuario + "')")
+	if err != nil {
+		panic(err.Error())
+	}
+	defer query.Close()
+	var resultado int
+	for query.Next() {
+		err := query.Scan(&resultado)
 		if err != nil {
 			panic(err.Error())
 		}

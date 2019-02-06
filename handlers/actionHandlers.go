@@ -7,6 +7,7 @@ import (
 	"instagram/data/model"
 	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
 
@@ -111,7 +112,7 @@ func Logout(response http.ResponseWriter, request *http.Request) {
 }
 
 //Uploader funcion para subir una foto y guardarla en carpeta
-func Uploader(w http.ResponseWriter, r *http.Request) {
+/*func Uploader(w http.ResponseWriter, r *http.Request) {
 
 	r.ParseMultipartForm(2000)
 
@@ -129,6 +130,46 @@ func Uploader(w http.ResponseWriter, r *http.Request) {
 	io.Copy(f, file)
 	fmt.Fprintf(w, fileInfo.Filename)
 
+}*/
+
+//Uploader Función sube archivos
+func Uploader(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Incoming request from " + r.URL.EscapedPath())
+	if r.URL.Path != PathUploader {
+		http.NotFound(w, r)
+		return
+	}
+	if r.Method != http.MethodPost {
+		http.NotFound(w, r)
+		return
+	}
+	r.ParseMultipartForm(2000)
+	//Coger el archivo y meterlo en una variable
+	file, fileInto, err := r.FormFile("archivo")
+	//Coger el texto del formulario y merterlo en una variable
+	texto := r.FormValue("texto")
+
+	usuario := getUserName(r)
+
+	fmt.Println(texto, "Nombre Usuario: ", usuario)
+
+	f, err := os.OpenFile("./files/"+fileInto.Filename, os.O_WRONLY|os.O_CREATE, 0666)
+
+	if err != nil {
+		log.Fatal(err)
+		return
+	}
+	defer f.Close()
+	io.Copy(f, file)
+	//La linea de abajo que esta comentada me manda a la página donde está el nombre del archivo
+	//fmt.Fprintf(w, fileInto.Filename)
+	//Esta linea de aqui abajo me manda a la pagina principal donde están todas las fotos
+	http.Redirect(w, r, "/", 301)
+	//Datos de la base de datos
+	id := client.ConsultaID(usuario)
+	fmt.Println(id)
+	//Subir foto a la base de datos
+	go client.SubirFoto(fileInto.Filename, texto, id)
 }
 
 //RegistroUsuario Función que inserta un registro en la base de datos local

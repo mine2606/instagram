@@ -15,6 +15,13 @@ type RLogin struct {
 	Password string
 }
 
+//RRegistro struct
 type RRegistro struct {
 	Registro bool
+}
+
+//RFoto struct
+type RFoto struct {
+	Texto string
+	URL   string
 }

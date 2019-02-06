@@ -23,6 +23,8 @@ func main() {
 	//http.HandleFunc("/envio", hnd.Insert)
 	//http.HandleFunc("/lista", hnd.List)
 
+	http.Handle("/files/", http.StripPrefix("/files/", http.FileServer(http.Dir("files"))))
+
 	log.Fatal(http.ListenAndServe(":"+strconv.Itoa(port), nil))
 	fmt.Println("Servidor abierto en http://localhost:" + strconv.Itoa(port))
 }

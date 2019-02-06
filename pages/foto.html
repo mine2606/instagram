@@ -13,10 +13,10 @@
         </div>
         <div> 
             <h2>Enviar foto</h2> 
-            <form action="http://localhost:8080/uploader" method="post" enctype="multipart/form-data">
-                <input type="file" name="archivo">
+            <form id="formFoto" action="http://localhost:8080/uploader" method="post" enctype="multipart/form-data">
+                <input type="file" id="img" name="archivo">
                 <input type="texto" name="texto" id="texto_comentario" placeholder="Pon tu texto aquí">
-                <input type="submit" value="Subir foto">
+                <input type="submit" value="Subir foto" id="btnFoto">
             </form> 
         </div> 
     </body>

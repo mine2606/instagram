@@ -53,5 +53,4 @@ func init() {
 	Manejadores[PathPerfil] = Perfil
 	Manejadores[PathLogin] = Login
 	Manejadores[PathLogout] = Logout
-
 }
