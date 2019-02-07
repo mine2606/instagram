@@ -113,3 +113,50 @@ func ConsultaID(usuario string) int {
 	}
 	return resultado
 }
+
+//MostrarFoto test
+func MostrarFoto() []model.RFoto {
+
+	db, err := sql.Open("mysql", "ubuntu:ubuntu@tcp(localhost:3306)/Instagram")
+
+	if err != nil {
+
+		panic(err.Error())
+
+	}
+
+	defer db.Close()
+
+	comando := "SELECT ID, Texto, Url FROM Foto"
+
+	fmt.Println(comando)
+
+	query, err := db.Query("SELECT ID, Texto, Url FROM Foto")
+
+	if err != nil {
+
+		panic(err.Error())
+
+	}
+
+	resultado := make([]model.RFoto, 0)
+
+	for query.Next() {
+
+		var foto = model.RFoto{}
+
+		err = query.Scan(&foto.ID, &foto.Texto, &foto.URL)
+
+		if err != nil {
+
+			panic(err.Error())
+
+		}
+
+		resultado = append(resultado, foto)
+
+	}
+
+	return resultado
+
+}

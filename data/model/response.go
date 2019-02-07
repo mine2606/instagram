@@ -22,6 +22,7 @@ type RRegistro struct {
 
 //RFoto struct
 type RFoto struct {
+	ID    string
 	Texto string
 	URL   string
 }

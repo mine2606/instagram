@@ -35,6 +35,9 @@ const PathLogin string = "/login"
 //PathLogout Ruta de envío de inicio de sesion
 const PathLogout string = "/logout"
 
+//PathListarFoto Ruta de envío de una foto
+const PathListarFoto string = "/listarFoto"
+
 //ManejadorHTTP encapsula como tipo la función de manejo de peticiones HTTP, para que sea posible almacenar sus referencias en un diccionario
 type ManejadorHTTP = func(w http.ResponseWriter, r *http.Request)
 
@@ -53,4 +56,5 @@ func init() {
 	Manejadores[PathPerfil] = Perfil
 	Manejadores[PathLogin] = Login
 	Manejadores[PathLogout] = Logout
+	Manejadores[PathListarFoto] = ListarFoto
 }

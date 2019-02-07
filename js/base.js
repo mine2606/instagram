@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    ActualizarFotos();
+
     console.log(document.cookie);
     console.log("Bienvenido a Inter Grafic");
     var formRegistro = $("#form_registro #cuerpo #submit_registro");
@@ -97,7 +99,42 @@ $(document).ready(function() {
     }else{
         $(".right2").hide();
     }
-   
 
+    
 });
 
+
+//Ajax para mostrar las fotos
+function ActualizarFotos() {   
+    $.ajax({
+        url: "/listarFoto",
+        method: "POST",
+        dataType: "json",
+        contentType: "application/json",
+        success: function(data) {
+            Historial_Fotos(data);
+        },
+        error: function(data) {
+            console.log(data);
+        }
+    });
+}
+
+function Historial_Fotos(array) {
+    var div = $("#fotos");
+    div.children().remove();
+    if(array != null && array.length > 0) {
+
+        for(var x = 0; x < array.length; x++) {
+            div.append( 
+            "<div>"
+                +"<img src='/files/"+array[x].URL+"' width='200px'>"+
+                "<p>"+array[x].Texto+
+                "</p>"+
+            "</div>");
+        }
+    } else {
+        div.append('<div colspan="3">No hay registros de hoy</div>');
+        
+    }
+}

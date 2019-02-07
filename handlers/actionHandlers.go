@@ -215,3 +215,23 @@ func RegistroUsuario(w http.ResponseWriter, r *http.Request) {
 	}
 
 }
+
+//ListarFoto Función que devuelve las peticiones de la base de datos dado un filtro
+func ListarFoto(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Incoming request from " + r.URL.EscapedPath())
+	if r.URL.Path != PathListarFoto {
+		http.NotFound(w, r)
+		return
+	}
+
+	if r.Method != http.MethodPost {
+		http.NotFound(w, r)
+		return
+	}
+
+	lista := client.MostrarFoto()
+	w.WriteHeader(http.StatusOK)
+	w.Header().Add("Content-Type", "application/json")
+	respuesta, _ := json.Marshal(&lista)
+	fmt.Fprint(w, string(respuesta))
+}
