@@ -91,3 +91,12 @@ input{
 }
 
 
+
+
+#fotos {
+    width: 80%;
+    padding-top: 80px;
+    column-gap: 10em;
+    columns: 3;
+    text-align: justify;
+  }

@@ -100,6 +100,8 @@ $(document).ready(function() {
         $(".right2").hide();
     }
 
+   
+
     
 });
 
@@ -121,16 +123,17 @@ function ActualizarFotos() {
 }
 
 function Historial_Fotos(array) {
+    
     var div = $("#fotos");
     div.children().remove();
     if(array != null && array.length > 0) {
+      
 
         for(var x = 0; x < array.length; x++) {
             div.append( 
             "<div>"
-                +"<img src='/files/"+array[x].URL+"' width='200px'>"+
-                "<p>"+array[x].Texto+
-                "</p>"+
+                +"<img src='/files/"+array[x].URL+"' width='300px' height='180px'>"+
+                "<p>"+array[x].Texto+"</p>"+
             "</div>");
         }
     } else {
