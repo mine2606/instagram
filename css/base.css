@@ -11,40 +11,20 @@
     width: 22%;
 }
 
-.waves-effect{
-    font-size:12px;
-    font-family:Arial;
-    font-weight:bold;
-    color:white;
-    background:#4da08c;
-    border:0px;
-    width:80px;
-    height:19px;
+header{
+    background-color: #e8e8e8;
 }
 
-#usuario, #contraseña{
-    width: 25%;
+#no_login, #login{
+    float: right;
+    padding-top: 10px;
 }
 
-.box {
-    overflow: hidden;
+#login{
+    padding-top: 25px;
+    padding-right: 10px;
 }
 
-.content {
-    font-size: 15px;
-    line-height: 20px;
-    padding: 0 20px;
-    text-align: justify;
-}
-
-.left {
-    float: left;       
-}
-
-#derecha {
-    float: right; 
-    padding: 10px;   
-}
 
 
 /* registro */ 
@@ -72,31 +52,33 @@
     padding:15px 35px;
 }
  
-input{
-   
+input{   
     font:bold 12px Arial, Helvetica, sans-serif;
     height: 24px;
     line-height: 20px;
     padding:0 2px;
     width: 230px;
 }
- 
 
 #submit_registro{
     background: -webkit-linear-gradient(top,#fc6,#f63);
     background: linear-gradient(top,#fc6,#f63);
-    /*Color del texto*/
-   
+    /*Color del texto*/   
     width: 120px;
 }
 
-
-
-
+/* Tres columnas y formato para tener mismo tamaño */
 #fotos {
     width: 80%;
+    padding-left: 100px;
     padding-top: 80px;
     column-gap: 10em;
     columns: 3;
     text-align: justify;
+  }
+
+
+  /* BOTONES INDEX */
+  #btnFoto{
+      background-color: aqua;
   }

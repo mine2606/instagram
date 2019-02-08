@@ -1,5 +1,6 @@
 $(document).ready(function() {
     ActualizarFotos();
+    MostrarNombre();
 
     console.log(document.cookie);
     console.log("Bienvenido a Inter Grafic");
@@ -97,7 +98,7 @@ $(document).ready(function() {
     if (document.cookie != ""){
         $("#formLogin").hide();
     }else{
-        $(".right2").hide();
+        $("#login").hide();
     }
 
    
@@ -140,4 +141,28 @@ function Historial_Fotos(array) {
         div.append('<div colspan="3">No hay registros de hoy</div>');
         
     }
+}
+
+
+
+// NOMBRE USUARIO
+//Ajax para mostrar nombre usuario
+function MostrarNombre() {   
+    var nombre = {
+        nombre: nombre
+    };
+    
+    $.ajax({       
+        url: "/nombreUsuario",
+        method: "POST",
+        dataType: "json",
+        contentType: "application/json",
+        success: function(data) {
+            console.log(data);
+            console.log("Hola");
+        },
+        error: function(data) {
+            console.log(data);
+        }
+    });
 }

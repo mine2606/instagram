@@ -8,27 +8,26 @@
         <link rel="stylesheet" href="/css/base.css">
     </head>
     <body>
-        <div>      
-            <div class="left">            
-                    <img src="https://pbs.twimg.com/profile_images/813833355464757248/R6kf0yEv.jpg" alt="Logo" width="80" height="80">            
+        <header>      
+            <nav>          
+                <img src="https://pbs.twimg.com/profile_images/813833355464757248/R6kf0yEv.jpg" alt="Logo" width="80" height="80">            
+                <div id="no_login">            
+                    <form method="POST" id="formLogin">
+                        <div id="datos">
+                            <input name="username" id="usuario" type="uername" class="validate" placeholder="Usuario">
+                            <input name="password" id="password" type="password" class="validate" placeholder="Contraseña">
+                            <button type="button" class="waves-effect waves-light btn">Acceder</button>
+                        </div> 
+                        <p id="enlace_index">¿No estás registrado? <a href="http://localhost:8080/registroFile"> Registro </a></p>                          
+                    </form>
+                </div>  
+                <div id="login">
+                    <button id="btnFoto" onclick="location.href='/foto'" type="button">Subir foto</button>                   
+                    <button onclick="location.href='/perfil'" type="button">Mi perfil</button>
+                    <button onclick="location.href='/logout'" type="button">Cerrar sesión</button>  
                 </div>
-            </div>
-            <div id="derecha">            
-                <form method="POST" id="formLogin">
-                    <div id="datos">
-                        <input name="username" id="usuario" type="uername" class="validate" placeholder="Usuario">
-                        <input name="password" id="password" type="password" class="validate" placeholder="Contraseña">
-                        <button type="button" class="waves-effect waves-light btn">Acceder</button>
-                    </div> 
-                    <p id="enlace_index">¿No estás registrado? <a href="http://localhost:8080/registroFile"> Registro </a></p>                          
-                </form>  
-                <div class="right2">
-                    <button onclick="location.href='/foto'" type="button">Subir foto</button>
-                    <button onclick="location.href='/logout'" type="button">Cerrar sesión</button> 
-                    <button onclick="location.href='/perfil'" type="button">Mi perfil</button> 
-                </div>                 
-            </div> 
-        </div>
+            </nav>
+        </header>
 
         <div id="fotos">            
                 

@@ -29,6 +29,12 @@ func getUserName(request *http.Request) (usuario string) {
 	return usuario
 }
 
+//NombreUsuario Función que muestra el nombre de usuario logueado
+func NombreUsuario(response http.ResponseWriter, request *http.Request) {
+	nombre := getUserName(request)
+	fmt.Fprintf(response, nombre)
+}
+
 func setSession(usuario string, response http.ResponseWriter) {
 	value := map[string]string{
 		"name": usuario,
